@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BensonGathu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div style="background-color:rgb(245,245,245);">
+        <div class="container" >     
+	        <div class="row align-items-center" >
+			    <div class="col">         
+		            <img class="profile-image img-fluid float-start rounded-circle" src="../../static/images/1580804303248.jpeg" alt="profile image">
+		            <div class="profile-content">
+		                <h1 class="name">Benson Gathu</h1>
+		                <h2 class="desc">FullStack Developer</h2>
+                        <ul class="social list-inline">
+                            <li class="list-inline-item ">
+                                <a href="https://github.com/BensonGathu"  target="_blank"style="color: black;"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="list-inline-item ">
+                                <a href="www.linkedin.com/in/benson-gathu-a9a8b41a0" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul> 
+		            </div><!--//profile-->
+			    </div><!--//col-->
+            </div>
+        </div>
+    </div>
+
+        <br>
+
+        <div style="background-color: rgb(218,227,231);">
+                <div class="container sections-wrapper py-5" >
+                    <div class="row">
+                        <div class="primary col-lg-8 col-12">
+
+                    <section class="about section">
+                        <div class="section-inner shadow-sm rounded" style="background-color: white;  padding: 5px;">
+                            <h2 class="heading" style="color: rgb(84,94,105); font-family: Roboto;">About Me</h2>
+                            <div class="content" style="font-family: Alegreya;">
+                                <p>Self-motivated professional looking to utilize my academic and professional knowledge in an organization that offers dynamic, challenging and rewarding tasks as well as good working environment and good prospects for career advancements. This will enable me to fully exploit my potential towards achieving organizational goals and objectives.</p>
+                             
+                            </div><!--//content-->
+                        </div><!--//section-inner-->                 
+                    </section>
+                    <p></p>
+                    <section class="about section" >
+                        <div class="section-inner shadow-sm rounded" style="background-color: white;  padding: 5px;">
+                            <h2 class="heading" style="color: rgb(84,94,105); font-family: Roboto;">My Projects</h2>
+                            <div class="content">
+                            <ul>
+                            {% for project in projects %}
+
+                            <li><a href="{{project.url}}"target="_blank" style="text-decoration: none;color: black;">{{project.title}}</a></li>
+                            {%endfor%}            
+                            </ul>
+                            </div><!--//content-->
+                        </div><!--//section-inner-->                 
+                    </section>
+                    
+                
+                </div>
+                <div class="secondary col-lg-4 col-12">
+                    <aside class="info aside section" >
+                        <div class="section-inner shadow-sm rounded"style="background-color: white; padding: 5px; ">
+                            <h2 class="heading sr-only" style="color: rgb(84,94,105);">Basic Information</h2>
+                            <div class="content">
+                                <ul class="list-unstyled" style=" padding: 5px;" >
+                                    <h6><li><i class="fa fa-envelope" aria-hidden="true"></i>: bensongathu23@gmail.com</li></h6>
+                                    <h6><li><i class="fa fa-mobile fa-2x" aria-hidden="true"></i>: +254703446950</li></h6>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                    <p></p>
+
+                    <aside class="skills aside section" >
+                        <div class="section-inner shadow-sm rounded" style="background-color: white; padding: 5px;">
+                            <h2 class="heading" style="color: rgb(84,94,105); font-family: Roboto;">Skills</h2>
+                            <div class="content">
+                                <p class="inro" style="font-family: Verdana;">Profecient in the following:</p>
+                                <div class="skillset">
+                                    <div class="item">
+                                        <ul>
+                                        {%for skill in all_languages %}
+                                        <li>{{skill.name}}</li>
+                                    
+                                        {% endfor %}
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+	        </div><!--//row-->         
+    </div>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
