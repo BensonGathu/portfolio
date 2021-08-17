@@ -26,20 +26,6 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
 
-class Project(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    title = models.TextField()
-    description = tiny_models.HTMLField()
-    url = models.URLField()
-    images = models.ImageField(upload_to = 'images/',default='someimage',null=True,blank=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
-
-    def save_project(slef):
-        self.save()
-
 class Languages(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=250)
@@ -50,3 +36,22 @@ class Languages(models.Model):
 
     def save_languages(self):
         self.save()
+
+
+class Project(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    title = models.TextField()
+    description = tiny_models.HTMLField()
+    url = models.URLField()
+    images = models.ImageField(upload_to = 'images/',default='someimage',null=True,blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    image_1 = models.ImageField(upload_to='projects/',default="project image")
+    image_2 = models.ImageField(upload_to='projects/',default="project image")
+    languages = models.ManyToManyField(Languages)
+
+    def __str__(self):
+        return self.title
+
+    def save_project(slef):
+        self.save()
+

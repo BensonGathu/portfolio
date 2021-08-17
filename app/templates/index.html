@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,56 @@
     <title>BensonGathu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+  {% endblock %}
+
+  <style>
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.ttle {
+    transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.proj-img:hover .image {
+  opacity: 0.3;
+}
+
+.proj-img:hover .middle {
+  opacity: 1;
+}
+
+.proj-img:hover .ttle {
+  opacity: 1;
+}
+
+  </style>
 
 </head>
 <body>
@@ -53,13 +104,45 @@
                     <p></p>
                     <section class="about section" >
                         <div class="section-inner shadow-sm rounded" style="background-color: white;  padding: 5px;">
-                            <h2 class="heading" style="color: rgb(84,94,105); font-family: Roboto;">My Projects</h2>
+                            <h2 class="heading" style="color: rgb(84,94,105); font-family: Roboto; text-align: center;">My Projects</h2>
                             <div class="content">
                             <ul>
+                                <div class="row ">
                             {% for project in projects %}
+                            <div class="col-md-6 proj-img" >
+                                <div class="card" style="width: 18rem;">
+                                    <img src="{{project.images.url}}" class="card-img-top image" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title ttle">{{project.title}}</h5>
+                                      <p class="card-text">{{project.description | truncatechars:30 | safe }}
+                    
+                                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Read More
+                                          </button>
+                                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                
+                                                <div class="modal-body">
+                                                  {{project.description | safe}}
+                                                  
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                      <a href="{{project.url}}" class="middle" target="_blank"><button type="button" class="btn btn-dark">Link</button></a>
 
-                            <li><a href="{{project.url}}"target="_blank" style="text-decoration: none;color: black;">{{project.title}}</a></li>
-                            {%endfor%}            
+                                    </div>
+                                  </div>
+                            </div>
+                        
+                            {%endfor%} 
+                        </div>
+                                   
                             </ul>
                             </div><!--//content-->
                         </div><!--//section-inner-->                 
@@ -89,10 +172,12 @@
                                 <div class="skillset">
                                     <div class="item">
                                         <ul>
-                                        {%for skill in all_languages %}
-                                        <li>{{skill.name}}</li>
-                                    
-                                        {% endfor %}
+                                            <li class="ht">HTML</li>
+                                            <li class="cs">CSS</li>
+                                            <li class="js">JavaScript</li>
+                                            <li class="dj">Django Framework</li>
+                                            <li class="fl">Flask Framework</li>
+                                            <li class="an">Angular</li>
                                     </ul>
                                     </div>
                                 </div>
@@ -107,5 +192,22 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script>
+        function myFunction() {
+          var dots = document.getElementById("dots");
+          var moreText = document.getElementById("more");
+          var btnText = document.getElementById("myBtn");
+        
+          if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more"; 
+            moreText.style.display = "none";
+          } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less"; 
+            moreText.style.display = "inline";
+          }
+        }
+        </script>
 </body>
 </html>
