@@ -15,6 +15,8 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -153,3 +155,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+# CONTACT_EMAIL = ''
+# ADMIN_EMAIL = ['admin@example.com', ]
+
+
+# # Twilio SendGrid
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'apikey'
+# 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
+DEFAULT_FROM_EMAIL = 'unknownknowns32@gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net' # new
+EMAIL_HOST_USER = 'apikey' # new
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+EMAIL_PORT = 587 # new
+EMAIL_USE_TLS = True # new
