@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app',
     'tinymce',
     "django_bootstrap5",
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -167,10 +168,9 @@ django_heroku.settings(locals())
 # EMAIL_HOST_USER = 'apikey'
 # 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new
-DEFAULT_FROM_EMAIL = 'unknownknowns32@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.net' # new
-EMAIL_HOST_USER = 'apikey' # new
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
-EMAIL_PORT = 587 # new
-EMAIL_USE_TLS = True # new
+# EMAIL_HOST = 'smtp.zoho.com' # new
+# EMAIL_HOST_USER = '' # new
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_PORT = 587 # new
+# EMAIL_USE_TLS = True # new
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # new

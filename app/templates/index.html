@@ -1,5 +1,7 @@
 {% load static %}
 {% load django_bootstrap5 %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,8 @@
     <title>BensonGathu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     {% block styles %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -106,9 +110,9 @@
                     <form action="" method="post">
                       {% csrf_token %}
                       
-                      
                       {%bootstrap_form form%}
-                      <input type="submit" value="Submit">
+                      
+                      <input type="submit" onclick="Submitted()" value="Submit">
 
                         
                       </form>
@@ -243,6 +247,7 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+       
     <script>
         function myFunction() {
           var dots = document.getElementById("dots");
@@ -259,6 +264,15 @@
             moreText.style.display = "inline";
           }
         }
+
+        function Submitted(name){
+    var name = document.getElementById("username").value;
+    if (name !== null){
+        alert(name + " we have received your message. Thank you for reaching out to us.")
+        };
+        return name;
+    };
+          
         </script>
 </body>
 </html>
